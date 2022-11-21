@@ -3,19 +3,17 @@ import {Link} from 'react-router-dom'
 import { Button, Container } from "../assets/styled-components/Styled";
 import Logo from "../assets/styled-components/Logo"
 
-export default function Signup() {
+export default function Signin() {
     return (
         <Container>
             <Logo/>
             <Form>
-                <Field type="text" name="name" placeholder="Nome"/>
                 <Field type="text" name="email" placeholder="E-mail"/>
                 <Field type="password" name="password" placeholder="Senha"/>
-                <Field type="password" name="password" placeholder="Confirme a senha"/>
-                <Button>Cadastrar</Button>
+                <Button>Entrar</Button>
             </Form>
-            <StyledLink to={`/sign-in`}>
-                    Já tem uma conta? Entre agora!
+            <StyledLink to={`/sign-up`}>
+                    Primeira vez? Cadastre-se!
             </StyledLink>
         </Container>
     )
