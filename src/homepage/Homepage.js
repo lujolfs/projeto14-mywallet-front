@@ -1,14 +1,36 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { Icon } from '@iconify/react';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Income from "./Income";
 import Expenditure from "./Expenditure";
+import axios from "axios";
 
 export default function Homepage() {
+    const navigate = useNavigate()
     const [userInput, setUserInput] = useState(null);
+    const [name, setName] = useState();
+    const [auth, setAuth] = useState();
 
+
+    useEffect(() => {
+        const solUserData = axios.get(`http://localhost:5000/`);
+
+        solUserData.then(res => {
+            setName(res.data.name);
+            setAuth(true);
+        });
+
+        solUserData.catch(err => {
+            console.log(err.response.data);
+            setAuth(false);
+        })
+    })
+    
     return (
+        
         <Container>
+            {auth ? <>
             <Header>
                 Olá, Fulano
                 <Icon icon="ri:logout-box-r-line" />
@@ -27,7 +49,7 @@ export default function Homepage() {
                     <Icon icon="material-symbols:do-not-disturb-on-outline" width="26"/>
                     Nova saída
                 </Button>
-            </ButtonBox>
+            </ButtonBox> </> : null}
         </Container>
     )
 }
