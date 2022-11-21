@@ -34,6 +34,7 @@ border-radius: 5px;
 height: 60px;
 width: 325px;
 padding-left: 15px;
+font-family: 'Raleway', sans-serif;
 `
 
 const StyledLink = styled(Link)`
